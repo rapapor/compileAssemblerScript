@@ -1,0 +1,19 @@
+.section .text
+	.global _start
+	_start:
+
+	mov $6, %ECX
+	mov %ECX, %EAX ; przypisuje do EAX wartosc z  ECX
+
+silnia:
+	dec %ECX	; zmniejszam ECX o jeden
+	cmp $0, %ECX	; sprawdzam czy ECx jest rowny 0 czyli juz silnia sie skonczyla
+	je koniec	; jezeli zer oskocz do konca
+	mul %ECX	; mnoy czyli wykonuje to co silnia robi 
+	
+	jmp silnia	; skok do etykiety silnia
+koniec:	
+
+	nop
+
+	

@@ -1,0 +1,20 @@
+.section .text
+	.global _start
+	_start:
+
+		;// EBX <- |ECX-EDX|
+
+
+	mov $5, %EDX
+	mov $2, %ECX
+
+	sub %EDX, %ECX  ; odejmuje ecx - edx
+	cmp $0, %ECX	; porownuje wynik odejmowania 
+	jge NIENEGUJ	; jezeli wynik nie ujemny skocz 
+	neg %ECX	; zaneguje jezeli nie skoczy czyli jezeli wynik ujemny
+
+NIENEGUJ:
+	mov %ECX, %EBX
+
+
+nop

@@ -1,0 +1,28 @@
+.section .text
+	.global _start
+	_start:
+
+		;// max(EBX, ECX, EDX)
+
+	mov $55, %EBX
+	mov $15, %ECX
+	mov $7, %EDX
+
+	cmp %ECX,%EBX   ; porownuje EBX z ECX
+	jg EBXwiekszy	; jezeli EBX wiekszy to skocz do etykiety
+	cmp %ECX, %EDX	; porownuje EDX z ECX
+	jg EBXwiekszy	; jezeli EDX wiekszy to skocz do etykiety
+	mov %ECX, %EAX	; wyszlo ze ECX jest najwiekszy to przypisz do EAX
+	jmp koniec	; skocz do etykiety koniec
+
+EBXwiekszy:
+
+	cmp %EDX, %EBX ; porownaj EBX z EDX
+	jg koniecEBX   ; jezeli ebx wiekszy to skocz do etykiety
+	mov %EDX,%EAX  ; nie skoczyl wiec EDX byl wiekszy przypisuj do EAX
+	jmp koniec     ; skocz na koniec 
+koniecEBX:
+	mov %EBX, %EAX ; EBX byl wiekszy wiec przypisz EBX do EAX
+
+koniec:
+nop

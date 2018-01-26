@@ -1,0 +1,22 @@
+.section .text
+	.global _start
+	_start:
+
+		;// max(EBX, ECX)
+
+	mov $5, %EBX
+	mov $3, %ECX
+
+	cmp %ECX,%EBX  ; porownuje ebx z ecx
+	jg EBXwiekszy   ; jezeli ebx wiekszy skacze do etykiety
+	mov %ECX, %EAX	; jezeli mniejszy ustawia wartosc eac z wartosci ecx
+	jmp koniec	; skacze do koniec zeby nie przypisac wartosci z etykiety ebxwiekszy
+
+EBXwiekszy:
+	mov %EBX,%EAX
+
+
+koniec:
+	
+
+	nop
