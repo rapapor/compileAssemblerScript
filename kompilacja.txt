@@ -1,0 +1,3 @@
+as --32 --gstabs nazwa.s -o prog.o
+ld -melf_i386 prog.o -o nazwa
+gdb nazwa

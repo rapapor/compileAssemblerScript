@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function kompiluj
+{	echo "plik tekstowy:"
+	read nazwa
+	echo "plik uruchamialny nazwa:" 
+	read prog
+	as --32 --gstabs $nazwa.s -o $prog.o
+	echo "zrobione: as --32 --gstabs $nazwa.s -o $prog.o"
+	echo "podaj nazwe pliku wyjsciowego"
+	read nazwapliku
+	ld -melf_i386 $prog.o -o $nazwapliku
+	echo "zrobione: ld -melf_i386 $prog.o -o $nazwapliku"
+	gdb $nazwapliku
+}
+
+kompiluj

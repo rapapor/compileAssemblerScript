@@ -1,0 +1,26 @@
+#!/bin/bash
+
+x=`echo $*`
+
+IFS=' ' read -r -a array <<< "$x"
+
+n=${#array[@]}
+
+if [[ $n -eq 0 ]];then
+	echo "Pomoc: skrypt przyjmuje 3  parametry 1.nazwa pliku ze skryptem assemblera, 2. nazwa pliku skompilowanego 2.nazwa pliku dla debugera 'uruchamialnego'"	
+	exit
+
+fi
+
+getopts
+getopts
+getopts
+
+	
+	as --32 --gstabs $1.s -o $2.o
+
+	ld -melf_i386 $2.o -o $3
+	
+	gdb $3
+
+ 
